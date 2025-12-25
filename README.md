@@ -1,18 +1,19 @@
-# week2-data-work
+This project demonstrates a complete data analytics workflow built to transform raw transactional data into clean, analytics-ready outputs and exploratory insights.
 
-A small data workflow project that:
-- loads raw CSVs (orders, users)
-- cleans and validates data
-- builds an analytics-ready table with time features, safe joins, and outlier handling
+What the project does:
+- Loads raw CSV data and stores it in Parquet format with enforced schemas.
+- Applies data quality checks to ensure required columns exist, datasets are non-empty, and keys are unique.
+- Handles missing values by auditing and adding explicit missing-value flags.
+- Cleans and normalizes categorical fields to produce consistent values.
+- Parses datetime fields and creates time-based features such as year, month, weekday, and hour.
+- Combines fact and dimension data using a safe left join to avoid row duplication.
+- Detects and handles outliers in monetary values using IQR-based rules and winsorization.
+- Produces a final analytics table used for analysis.
 
-## Structure
-- `src/bootcamp_data/` reusable code (paths, IO, transforms, joins, quality)
-- `scripts/` runnable pipelines
-- `data/raw/` input CSVs
-- `data/processed/` generated Parquet outputs
-- `reports/` quality reports
+Exploratory Data Analysis (EDA) is performed using a Jupyter notebook to:
+- Analyze revenue by country.
+- Study revenue trends over time.
+- Examine transaction amount distributions.
+- Compare refund behavior between countries using a bootstrap approach.
 
-## How to run
-Install:
-```bash
-pip install -r requirements.txt
+The focus of this project is on building a clean, reproducible, and well-validated analytics pipeline rather than predictive modeling.
